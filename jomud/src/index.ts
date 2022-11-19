@@ -1,3 +1,5 @@
-import { getNewApp } from "./app";
+import { getCronRunner } from "./cron";
+import { getHttpServer } from "./http";
 
-getNewApp().run();
+getCronRunner().run();
+getHttpServer().run();

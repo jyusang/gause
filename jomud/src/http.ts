@@ -1,22 +1,24 @@
 import Koa from "koa";
 
-type App = {
+type HttpServer = {
   ref: Koa;
   run: () => void;
 };
 
-type AppConfig = {
+type HttpServerConfig = {
   port: number;
 };
 
-const getAppConfig = (config?: Partial<AppConfig>): AppConfig => {
+const getAppConfig = (config?: Partial<HttpServerConfig>): HttpServerConfig => {
   const { port = 3000 } = config ?? {};
   return {
     port,
   };
 };
 
-export const getNewApp = (config?: Partial<AppConfig>): App => {
+export const getHttpServer = (
+  config?: Partial<HttpServerConfig>
+): HttpServer => {
   const { port } = getAppConfig(config);
   const ref = new Koa();
   ref.use(async (ctx) => {
